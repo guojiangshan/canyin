@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-3.1.xsd
+						http://www.springframework.org/schema/mvc 
+						http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+	<context:component-scan base-package="cn.changdai.service">
+	 	  <context:include-filter  type="annotation"  expression="org.springframework.stereotype.Service"   />  
+          <context:include-filter  type="annotation"  expression="org.springframework.stereotype.Repository"   />  
+          <context:include-filter  type="annotation"  expression="org.springframework.stereotype.Component"    />  
+          <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				 <value>classpath:canyinConfig.properties</value>
+			</list>
+		</property>
+	</bean>
+       <bean id="dataSourceWriter" class="com.jolbox.bonecp.BoneCPDataSource"    destroy-method="close">  
+            <!-- 数据库驱动 -->  
+            <property name="driverClass"  value="com.mysql.jdbc.Driver" />  
+            <!-- 相应驱动的jdbcUrl,你懂的 -->  
+            <property name="jdbcUrl"  value="${db.master.url}" />  
+            <!-- 数据库的用户名 -->  
+            <property name="username"  value="${db.master.user}" />  
+            <!-- 数据库的密码 -->  
+            <property name="password" value="${db.master.password}" />  
+            <!-- 检查数据库连接池中空闲连接的间隔时间 -->  
+            <property name="idleConnectionTestPeriodInSeconds" value="25200" />  
+            <!-- 连接池中未使用的链接最大存活时间，单位是分，默认值：60，如果要永远存活设置为0 -->  
+            <property name="idleMaxAgeInSeconds"  value="1800" />  
+            <property name="connectionTimeoutInMs"  value="600000" />  
+             <property name="connectionTestStatement"  value="SELECT 'x' " />  
+            <!-- 每个分区最大的连接数 -->  
+            <property name="maxConnectionsPerPartition" value="${db.master.maxPoolSize}" />  
+            <!-- 每个分区最小的连接数 -->  
+            <property name="minConnectionsPerPartition" value="${db.master.minPoolSize}" />  
+            <!-- 分区数 ，默认值2，最小1，推荐3-4，视应用而定-->  
+            <property name="partitionCount" value="3" />  
+            <!-- 每次去拿数据库连接的时候一次性要拿几个,默认值：2 -->  
+            <property name="acquireIncrement" value="2" />  
+            <property name="acquireRetryDelayInMs" value="2000" />  
+            <property name="acquireRetryAttempts" value="3" />  
+            <!-- 缓存prepared statements的大小，默认值：0 -->  
+            <property name="statementsCacheSize" value="0" />  
+            <!-- 每个分区释放链接助理进程的数量，默认值：3，除非你的一个数据库连接的时间内做了很多工作，不然过多的助理进程会影响你的性能 -->  
+            <property name="releaseHelperThreads" value="3" />  
+            <property name="lazyInit" value="true" />  
+            <property name="logStatementsEnabled" value="true" />  
+            <property name="defaultAutoCommit" value="true" />  
+        </bean>  
+	 <!-- 设置MyBatis的SessionFactory  读写分离 -->
+	<bean id="sqlSessionFactoryWrite" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceWriter" />
+		<!-- 这里指定Mapper路径的配置信息 -->
+		<property name="configLocation" value="classpath:/cy/persistence/sqlmap-config.xml" />
+	</bean>
+	<bean id="sqlSessionWriter" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactoryWrite" />
+	</bean>
+	
+	<bean id="sqlSessionFactoryRead" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceWriter" />
+		<!-- 这里指定Mapper路径的配置信息 -->
+		<property name="configLocation" value="classpath:/cy/persistence/sqlmap-config.xml" />
+	</bean>
+	<bean id="sqlSessionRead" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactoryRead" />
+	</bean>
+	<!-- 支持 @Transactional 标记 (默认只回滚RuntimeException的异常，可以通过@Transactional(rollbackFor=Exception.class)来改变)--> 
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	    <property name="dataSource" ref="dataSourceWriter" />
+	</bean>
+	<import resource="canyin-bean.xml" />
+</beans>
