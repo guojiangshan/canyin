@@ -13,7 +13,7 @@ public class Shangdian implements java.io.Serializable{
 	
 	private long sd_id;
 	private String sd_mingcheng;
-	private String sd_zuoweishu; //座位数
+	private int sd_zuoweishu; //座位数
 	private String dizhi;//地址
 	private String youbian;//邮编
 	private String phone;//电话
@@ -34,10 +34,10 @@ public class Shangdian implements java.io.Serializable{
 	public void setSd_mingcheng(String sd_mingcheng) {
 		this.sd_mingcheng = sd_mingcheng;
 	}
-	public String getSd_zuoweishu() {
+	public int getSd_zuoweishu() {
 		return sd_zuoweishu;
 	}
-	public void setSd_zuoweishu(String sd_zuoweishu) {
+	public void setSd_zuoweishu(int sd_zuoweishu) {
 		this.sd_zuoweishu = sd_zuoweishu;
 	}
 	public String getDizhi() {

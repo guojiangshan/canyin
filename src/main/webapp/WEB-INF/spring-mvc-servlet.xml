@@ -61,19 +61,5 @@
 			</props>
 		</property>
 	</bean>
-	<!-- 
-	<bean id="multipartResolver" class="cn.changdai.upload.MyCommonsMultipartResolver">
-		<property name="maxUploadSize" value="104857600"/>
-		<property name="maxInMemorySize" value="4096"/>
-	</bean>
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-	       	<bean id="loginInterceptor" class="cn.changdai.web.interceptor.LoginInterceptor"/>
-		</mvc:interceptor>
-	</mvc:interceptors>
-	-->
-	<!-- 对静态资源的访问 /  配置对静态资源访问的  default servlet 
-	<mvc:resources mapping="/static/**" location="static/"/>
-	-->
+
 </beans>
