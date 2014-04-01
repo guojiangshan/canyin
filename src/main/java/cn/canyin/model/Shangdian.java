@@ -12,8 +12,8 @@ public class Shangdian implements java.io.Serializable{
 	private static final long serialVersionUID = -6496873258477775627L;
 	
 	private long sd_id;
-	private String sd_mingcheng;
-	private int sd_zuoweishu; //座位数
+	private String mingcheng;
+	private int zuoweishu; //座位数
 	private String dizhi;//地址
 	private String youbian;//邮编
 	private String phone;//电话
@@ -21,24 +21,24 @@ public class Shangdian implements java.io.Serializable{
 	private String youxiang;//邮箱
 	private Date 	createtime;//记录创建时间
 	private Date    updatetime;//记录修改时间
-	private String sd_dianzhu;
+	private String dianzhu;
 	public long getSd_id() {
 		return sd_id;
 	}
 	public void setSd_id(long sd_id) {
 		this.sd_id = sd_id;
 	}
-	public String getSd_mingcheng() {
-		return sd_mingcheng;
+	public String getMingcheng() {
+		return mingcheng;
 	}
-	public void setSd_mingcheng(String sd_mingcheng) {
-		this.sd_mingcheng = sd_mingcheng;
+	public void setMingcheng(String mingcheng) {
+		this.mingcheng = mingcheng;
 	}
-	public int getSd_zuoweishu() {
-		return sd_zuoweishu;
+	public int getZuoweishu() {
+		return zuoweishu;
 	}
-	public void setSd_zuoweishu(int sd_zuoweishu) {
-		this.sd_zuoweishu = sd_zuoweishu;
+	public void setZuoweishu(int zuoweishu) {
+		this.zuoweishu = zuoweishu;
 	}
 	public String getDizhi() {
 		return dizhi;
@@ -82,13 +82,12 @@ public class Shangdian implements java.io.Serializable{
 	public void setUpdatetime(Date updatetime) {
 		this.updatetime = updatetime;
 	}
-	public String getSd_dianzhu() {
-		return sd_dianzhu;
+	public String getDianzhu() {
+		return dianzhu;
 	}
-	public void setSd_dianzhu(String sd_dianzhu) {
-		this.sd_dianzhu = sd_dianzhu;
+	public void setDianzhu(String dianzhu) {
+		this.dianzhu = dianzhu;
 	}
 
-	
 	
 }

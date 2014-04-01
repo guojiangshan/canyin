@@ -3,15 +3,15 @@
 <mapper namespace="cn.canyin.model.Shangdian">
 	<resultMap id="shangdian" type="cn.canyin.model.Shangdian">
 		<result column="sd_id" property="sd_id"  />
-		<result column="sd_mingcheng" property="sd_mingcheng" />
-		<result column="sd_zuoweishu" property="sd_zuoweishu" />
-		<result column="sd_dizhi" property="sd_dizhi" />
-		<result property="sd_youbian"  column="sd_youbian" />
-		<result column="sd_weixinid" property="sd_weixinid" />
-		<result column="sd_youxiang" property="sd_youxiang" />
-		<result column="create_time" property="create_time" />
-		<result column="update_time" property="update_time" />
-		<result column="sd_zhuren" property="sd_zhuren" />
+		<result column="sd_mingcheng" property="mingcheng" />
+		<result column="sd_zuoweishu" property="zuoweishu" />
+		<result column="sd_dizhi" property="dizhi" />
+		<result column="sd_youbian"  property="youbian" />
+		<result column="sd_weixinid" property="weixinid" />
+		<result column="sd_youxiang" property="youxiang" />
+		<result column="create_time" property="createtime" />
+		<result column="update_time" property="updatetime" />
+		<result column="sd_zhuren" property="dianzhu" />
 	</resultMap>
 	<sql id="commonColumns">
 		sd_id ,sd_mingcheng ,sd_zuoweishu ,sd_dizhi ,sd_youbian ,sd_weixinid ,sd_youxiang ,create_time ,create_time ,update_time ,sd_zhuren
