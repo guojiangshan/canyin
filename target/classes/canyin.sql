@@ -124,7 +124,7 @@ UI的设计与编写
 
 另外：carcia， weilly， peter
 
-
+git push https://github.com/guojiangshan/canyin master
 
 
 */
