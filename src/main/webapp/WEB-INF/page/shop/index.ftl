@@ -11,7 +11,7 @@ function formSubmit()
 
 <body>
 
-<form id="myForm" action="http://localhost:8080/CanYin-www/shop/getbysdid" method="post">
+<form id="myForm" action="http://localhost:8080/CanYin-www/Shop/getbysdid" method="post">
 shop name: <input type="text" name="sd_id" size="20"><br />
 <br />
 <input type="button" onclick="formSubmit()" value="Submit">

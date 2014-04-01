@@ -17,7 +17,7 @@ import cn.canyin.service.impl.RedisClient;
 
 
 @Controller
-@RequestMapping(value = "/shop")
+@RequestMapping(value = "/Shop")
 public class ShangdianController {
 	public static Logger logger = Logger.getLogger(ShangdianController.class);
 	@Autowired
@@ -46,5 +46,14 @@ public class ShangdianController {
 			logger.error(e.getMessage(), e);
 		}
 		return "/shop/showshangdian";
+	}
+	
+	@RequestMapping(value = "/index")
+	public String index(
+			HttpServletRequest req) {
+		//Long sd_id = Long.parseLong(CookieUtil.getCookieByName(req, "sd_id"));
+		System.out.println("index");
+		
+		return "/shop/index";
 	}
 }

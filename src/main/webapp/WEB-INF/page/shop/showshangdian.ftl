@@ -7,6 +7,7 @@ test
 <div id='body'>
 	<div id='form'>
 		show shangdian.jsp
+		${shangdian.mingcheng}
 	</div>
 </div>
 </body>
