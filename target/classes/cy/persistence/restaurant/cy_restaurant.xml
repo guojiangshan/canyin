@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding= "UTF-8" ?>        
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.canyin.model.Restaurant">
+	<resultMap id="restaurant" type="cn.canyin.model.Restaurant">
+		<result column="r_id" property="r_id"  />
+		<result column="r_name" property="r_name" />
+		<result column="r_totseatnum" property="r_totseatnum" />
+		<result column="r_adress" property="r_adress" />
+		<result column="r_post"  property="r_post" />
+		<result column="r_phone" property="r_phone"/>
+		<result column="r_wechatid" property="r_wechatid" />
+		<result column="r_mail" property="r_mail" />
+		<result column="create_time" property="createtime" />
+		<result column="update_time" property="updatetime" />
+		<result column="r_owner" property="r_owner" />
+		<result column="r_status" property="r_status" />
+	</resultMap>
+	<sql id="commonColumns">
+		r_id ,r_name ,r_totseatnum ,r_adress ,r_post, r_phone,r_wechatid ,r_mail ,create_time ,update_time ,r_owner,r_status
+	</sql>
+	<select id="queryByRId" parameterType="Long"  resultMap="restaurant">
+		select<include refid="commonColumns" />
+		from cy_restaurant where r_id=#{r_id} limit 1;
+	</select>
+	<select id="queryByWechatId" parameterType="String"   resultMap="restaurant">
+		select <include refid="commonColumns" />
+		from cy_restaurant where r_wechatid=#{r_wechatid} ;
+	</select>
+
+	
+	<insert id="insertRestaurant" parameterType="cn.canyin.model.Restaurant"  useGeneratedKeys="true"  keyProperty="r_id">
+		insert into cy_restaurant(r_id ,r_name ,r_totseatnum ,r_adress ,r_post, r_phone,r_wechatid ,r_mail ,create_time ,update_time ,r_owner,r_status)
+		 values(#{r_id} ,#{r_name},#{r_totseatnum} ,#{r_adress} ,#{r_post} ,#{r_phone},#{r_wechatid},#{r_mail},#{createtime},#{updatetime} ,#{r_owner},#{r_status})
+	</insert>
+	
+</mapper>

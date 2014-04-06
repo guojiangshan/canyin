@@ -50,13 +50,13 @@ insert into cy_food(f_name,f_kind,f_unitprice,f_unit,create_time, update_time) v
 insert into cy_food(f_name,f_kind,f_unitprice,f_unit,create_time, update_time) values('猪肉白菜水饺','水饺','4','两','2014/04/05','2014/04/05');
 insert into cy_food(f_name,f_kind,f_unitprice,f_unit,create_time, update_time) values('三鲜水饺','水饺','3','两','2014/04/05','2014/04/05');
 
-DROP TABLE IF EXISTS cy_sdcdsw_map;  
 DROP TABLE IF EXISTS cy_rmf_map;  
 CREATE TABLE cy_rmf_map(
 	  `r_id` int(10) unsigned NOT NULL ,
 	  `m_id` int(10) unsigned NOT NULL ,
 	  `f_id` int(11) unsigned NOT NULL  COMMENT '食物ID',
 	  `f_unitprice` decimal(8,2) DEFAULT NULL COMMENT '单价',
+	  `f_unit` varchar(20) DEFAULT NULL COMMENT '计量单位：两，份',
 	  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
 	  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
 	  PRIMARY KEY (f_id,r_id,m_id)
@@ -66,10 +66,10 @@ CREATE TABLE cy_rmf_map(
 	  --foreign key(r_id) EFERENCES cy_restaurant(r_id),
 	  --foreign key(m_id) EFERENCES cy_menu(m_id),
 	  --foreign key(f_id) EFERENCES cy_food(f_id)
-insert into cy_rmf_map(r_id,m_id,f_id,f_unitprice,create_time,update_time) values(1,1,1,5,'2014/04/05','2014/04/05');
-insert into cy_rmf_map(r_id,m_id,f_id,f_unitprice,create_time,update_time) values(1,1,2,5,'2014/04/05','2014/04/05');
-insert into cy_rmf_map(r_id,m_id,f_id,f_unitprice,create_time,update_time) values(1,1,3,4,'2014/04/05','2014/04/05');
-insert into cy_rmf_map(r_id,m_id,f_id,f_unitprice,create_time,update_time) values(1,1,4,3,'2014/04/05','2014/04/05');
+insert into cy_rmf_map(r_id,m_id,f_id,f_unitprice,f_unit,create_time,update_time) values(1,1,1,5,'两','2014/04/05','2014/04/05');
+insert into cy_rmf_map(r_id,m_id,f_id,f_unitprice,f_unit,create_time,update_time) values(1,1,2,5,'两','2014/04/05','2014/04/05');
+insert into cy_rmf_map(r_id,m_id,f_id,f_unitprice,f_unit,create_time,update_time) values(1,1,3,4,'两','2014/04/05','2014/04/05');
+insert into cy_rmf_map(r_id,m_id,f_id,f_unitprice,f_unit,create_time,update_time) values(1,1,4,3,'两','2014/04/05','2014/04/05');
 
 DROP TABLE IF EXISTS `cy_db`.`cy_dingdan`;
 CREATE TABLE  `cy_order` (

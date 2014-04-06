@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans default-autowire="byName">
-  	<import resource="cy/bean/redis/redis.xml" />
-  	<import resource="cy/bean/restaurant/restaurant.xml" />
+    <bean id="RestaurantDao" class="cn.canyin.dao.impl.RestaurantDaoImpl"></bean>
+    <bean id="RestaurantService" class="cn.canyin.service.impl.RestaurantServiceImpl"></bean>
 </beans>
+         
