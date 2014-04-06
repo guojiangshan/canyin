@@ -9,6 +9,7 @@ test
 		show shangdian.jsp
 		${shangdian.mingcheng}
 	</div>
+	<a href='http://localhost:8080/CanYin-www/Shop/index'>返回</a>
 </div>
 </body>
 </html>
