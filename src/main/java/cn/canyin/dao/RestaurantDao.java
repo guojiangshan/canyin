@@ -2,7 +2,7 @@ package cn.canyin.dao;
 
 import cn.canyin.model.Restaurant;
 
-public interface RestaurantDao {
+public interface RestaurantDao  extends Dao{
 	public Restaurant findByRId(long ID) throws Exception;
 	
 	public Restaurant findByWechatId(String wxid) throws Exception;

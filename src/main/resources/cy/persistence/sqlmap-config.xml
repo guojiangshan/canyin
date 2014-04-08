@@ -3,5 +3,6 @@
 <configuration>
 	<mappers>
 		<mapper resource="cy/persistence/restaurant/cy_restaurant.xml" />
+		<mapper resource="cy/persistence/menu/cy_menu.xml" />
 	</mappers>
 </configuration>   

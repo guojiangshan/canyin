@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding= "UTF-8" ?>        
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.canyin.model.Menu">
+	<resultMap id="rm_menu" type="cn.canyin.model.Menu">
+		<result column="m_id" property="m_id"  />
+		<result column="m_name" property="m_name" />
+		<result column="create_time" property="createtime" />
+		<result column="update_time" property="updatetime" />
+		<result column="r_id" property="r_id" />
+	</resultMap>
+	<sql id="commonColumns">
+		m_id ,m_name,create_time ,update_time ,r_id
+	</sql>
+	<select id="queryByRId" parameterType="Long"  resultMap="rm_menu">
+		select<include refid="commonColumns" />
+		from cy_menu where r_id=#{r_id};
+	</select>
+	
+	<select id="queryById" parameterType="hashmap"   resultMap="rm_menu">
+		select <include refid="commonColumns" />
+		from cy_menu 
+		<where>  
+		   	<if test="r_id != null">  
+			  and r_id = #{r_id}
+			</if>	
+		    <if test="m_id != null">
+		   	  and m_id =  #{m_id}
+		   </if>	
+		</where>	  
+	</select>
+
+	
+	<insert id="insertMenu" parameterType="cn.canyin.model.Menu"  useGeneratedKeys="true"  keyProperty="m_id">
+		insert into cy_menu(m_id, m_name,create_time ,update_time ,r_id)
+		 values(#{m_id},#{m_name},#{createtime},#{updatetime} ,#{r_id})
+	</insert>
+	
+</mapper>

@@ -1,5 +1,5 @@
 package cn.canyin.service;
 
-public interface FoodService {
+public interface FoodService extends Service {
 
 }

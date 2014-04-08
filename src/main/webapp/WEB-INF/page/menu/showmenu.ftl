@@ -6,12 +6,16 @@ test
 <body>
 <div id='body'>
 	<div id='form'>
-		show Restaurant.jsp
-		${restaurant.r_name}
-		
+		show showmenu.ftl
+		${menu.m_name}<p/>
+		r_id 
+		${r_id}<p/>
+		m_id
+		${m_id}<p/>
 		
 	</div>
-	<a href='http://localhost:8080/CanYin-www/Restaurant/index'>返回</a>
+	<a href='http://localhost:8080/CanYin-www/Menu/index'>返回</a>
+	<a href='http://localhost:8080/CanYin-www/Menu/add'>add</a>
 </div>
 </body>
 </html>

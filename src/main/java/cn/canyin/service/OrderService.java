@@ -1,5 +1,10 @@
 package cn.canyin.service;
 
-public interface OrderService {
+import java.util.List;
 
+import cn.canyin.model.Menu;
+
+public interface OrderService extends Service{
+	
+	
 }
