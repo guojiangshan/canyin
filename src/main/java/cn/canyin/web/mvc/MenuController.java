@@ -100,7 +100,7 @@ public class MenuController {
 			//@RequestParam(value = "m_id", required = false)long m_id,
 			@RequestParam(value = "m_name", required = false)String m_name,
 			@RequestParam(value = "createtime", required = false)String createtime,
-			@RequestParam(value = "update_time", required = false)String updatetime,
+			@RequestParam(value = "updatetime", required = false)String updatetime,
 			@RequestParam(value = "r_id", required = false)long r_id,
 			ModelMap modelMap, HttpServletRequest req, HttpServletResponse response
 			){

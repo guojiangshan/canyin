@@ -4,5 +4,6 @@
 	<mappers>
 		<mapper resource="cy/persistence/restaurant/cy_restaurant.xml" />
 		<mapper resource="cy/persistence/menu/cy_menu.xml" />
+		<mapper resource="cy/persistence/food/cy_food.xml" />
 	</mappers>
 </configuration>   

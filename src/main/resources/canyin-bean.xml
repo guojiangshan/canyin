@@ -4,4 +4,5 @@
   	<import resource="cy/bean/redis/redis.xml" />
   	<import resource="cy/bean/restaurant/restaurant.xml" />
   	<import resource="cy/bean/menu/menu.xml" />
+  	<import resource="cy/bean/food/food.xml" />
 </beans>
