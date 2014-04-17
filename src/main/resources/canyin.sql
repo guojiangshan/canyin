@@ -89,7 +89,8 @@ CREATE TABLE  `cy_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --同一个食物在不同的菜单上可能买不同的价格
 
-
+insert into cy_order(r_id,m_id,o_seatnum,o_content,o_statu,o_feedback,o_custwechatid,o_custphone,o_custaddress,create_time,update_time) 
+			values(1,1,18,'1,1,两',0,'GOOD','gjswx','15900900900','Shanghai','2014/04/05','2014/04/05');
 
 /*
 kergp追寻  17:35:21
@@ -144,7 +145,7 @@ UI的设计与编写
 
 
 另外：carcia， weilly， peter
-
+git checkout ./src/main/resources/cy/persistence/food/cy_food.xml
 git push https://github.com/guojiangshan/canyin master
 
 

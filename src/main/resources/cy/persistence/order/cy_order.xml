@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding= "UTF-8" ?>        
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.canyin.model.Order">
+	<resultMap id="ro_order" type="cn.canyin.model.Order">
+		<result column="o_id" property="o_id"  />
+		<result column="o_seatnum" property="o_seatnum" />
+		<result column="o_content" property="o_content" />
+		<result column="o_statu" property="o_status" />
+		<result column="o_feedback" property="o_feedback" />
+		<result column="o_custwechatid" property="o_custwechatid" />
+		<result column="o_custphone" property="o_custphone"  />
+		<result column="o_custaddress" property="o_custaddress" />
+		<result column="create_time" property="createtime" />
+		<result column="update_time" property="updatetime" />
+		<result column="r_id" property="r_id" />
+		<result column="m_id" property="m_id"  />
+	</resultMap>
+	<sql id="commonColumns">
+		o_id ,o_seatnum,o_content,o_statu ,o_feedback ,o_custwechatid,o_custphone ,o_custaddress,create_time,update_time ,r_id ,m_id
+	</sql>
+	<select id="queryByOId" parameterType="Long"  resultMap="ro_order">
+		select<include refid="commonColumns" />
+		from cy_order where o_id=#{o_id};
+	</select>
+	
+	<select id="queryByOrderStatus" parameterType="hashmap"   resultMap="ro_order">
+		select <include refid="commonColumns" />
+		from cy_order
+		<where>  
+		   	<if test="r_id != null">  
+			   r_id = #{r_id}
+			</if>	
+				<if test="m_id != null">  
+			  and m_id = #{m_id}
+			</if>	
+		</where>	  
+	</select>
+
+	<select id="queryByRestaurantId" parameterType="Long"   resultMap="ro_order">
+		select <include refid="commonColumns" />
+		from cy_order where r_id = #{r_id}
+	</select>
+	
+	<insert id="insertOrder" parameterType="cn.canyin.model.Order"  useGeneratedKeys="true"  keyProperty="o_id">
+		insert into cy_food(o_id ,o_seatnum,o_content,o_status ,o_feedback ,o_custwechatid,o_custphone ,o_custaddress,create_time,update_time ,r_id ,m_id)
+		values(#{o_id},#{o_seatnum},#{o_content},#{o_status} ,#{o_feedback} ,#{o_custwechatid},#{o_custphone} ,#{o_custaddress},#{create_time},#{update_time} ,#{r_id} ,#{m_id})
+	</insert>
+
+</mapper>

@@ -5,4 +5,5 @@
   	<import resource="cy/bean/restaurant/restaurant.xml" />
   	<import resource="cy/bean/menu/menu.xml" />
   	<import resource="cy/bean/food/food.xml" />
+  	<import resource="cy/bean/order/order.xml" />
 </beans>
